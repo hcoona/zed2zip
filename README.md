@@ -5,8 +5,11 @@ This tool is used to extract **Magic The Gathering** game data files for modding
 ## Usage ##
 
 ```bash
-java -jar zed2zip.jar DATA_000.ZED
+# Show help
+java -jar zed2zip.jar -h
+
 # This would generate DATA_000.ZIP in the same folder
+java -jar zed2zip.jar -i DATA_000.ZED
 ```
 
 ## Acknowledgement ##
