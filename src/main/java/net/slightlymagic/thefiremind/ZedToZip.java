@@ -1,5 +1,12 @@
 package net.slightlymagic.thefiremind;
 
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
+
 import java.io.File;
 import java.io.RandomAccessFile;
 import java.math.BigInteger;
@@ -12,9 +19,37 @@ public class ZedToZip {
   private static BigInteger e = new BigInteger("11", 16);
 
   public static void main(String[] args) {
-    String zedFileName = "DATA_000.ZED";
-    if (args.length > 0)
-      zedFileName = args[0];
+    Options options = new Options();
+    options.addOption("h", "help", false, "Print this message");
+    options.addOption("i", "input", true, "Specify input ZED file");
+
+    boolean printHelp;
+    String inputFilePath;
+    CommandLineParser parser = new DefaultParser();
+    try {
+      CommandLine cmd = parser.parse(options, args);
+      printHelp = cmd.hasOption("h");
+      inputFilePath = cmd.getOptionValue("i");
+    } catch (ParseException ex) {
+      System.err.println(ex.getLocalizedMessage());
+      printHelp = true;
+      inputFilePath = null;
+    }
+
+    if (printHelp) {
+      String selfName = new java.io.File(ZedToZip.class.getProtectionDomain()
+        .getCodeSource()
+        .getLocation()
+        .getPath())
+        .getName();
+      HelpFormatter formatter = new HelpFormatter();
+      formatter.printHelp("java -jar " + selfName, options);
+    } else {
+      convert(inputFilePath);
+    }
+  }
+
+  private static void convert(String zedFileName) {
     if (!(new File(zedFileName)).isFile()) {
       System.out.println("ERROR: Could not find file " + zedFileName);
       return;
