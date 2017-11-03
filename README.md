@@ -12,6 +12,12 @@ java -jar zed2zip.jar -h
 java -jar zed2zip.jar -i DATA_000.ZED
 ```
 
+## TODO ##
+
+Update SHA key from [here](https://www.slightlymagic.net/forum/viewtopic.php?f=117&t=14839&start=300) for Magic Duels
+
+Add switch for these 2 different keys.
+
 ## Acknowledgement ##
 
 This tool is authored by **thefiremind** & **spirolone**. It's originally published [here](https://www.slightlymagic.net/forum/viewtopic.php?f=117&t=14839&start=90#p179787).
