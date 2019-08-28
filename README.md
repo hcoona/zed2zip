@@ -2,6 +2,8 @@
 
 This tool is used to extract **Magic The Gathering** game data files for modding.
 
+**Moved to https://github.com/hcoona/one/tree/master/zed2zip**
+
 ## Usage ##
 
 ```bash
